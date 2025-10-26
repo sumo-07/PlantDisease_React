@@ -1,0 +1,266 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f9f9f9;
+      color: #333;
+      min-height: 100vh;
+    }
+
+    /* Navbar */
+    nav {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: #2c7a4b;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 50px;
+      z-index: 1000;
+    }
+
+    nav .logo {
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      text-decoration: none;   /* removes underline */
+      font-family: inherit;    /* keeps same font */
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+      transition: 0.3s;
+      padding: 8px 12px;
+    }
+
+    nav ul li a:hover {
+      color: #d4ffd4;
+    }
+
+  
+
+    /* Special style for Login/Signup */
+    .login-btn {
+      background: white;
+      color: #2c7a4b !important;
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .login-btn:hover {
+      background: #14532d;
+      color: white !important;
+    }
+
+    /* Info Box */
+    .info-box {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 120px 50px 30px 50px;
+      line-height: 1.6;
+      background: #f9f9f9;
+    }
+
+    .extra-content {
+      display: none;
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px 0;
+      padding: 8px 16px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    .hide-btn {
+      background-color: #dc3545;
+    }
+
+    .hide-btn:hover {
+      background-color: #a71d2a;
+    }
+
+    .info-box ul {
+        padding-left: 20px;  /* Space from left border */
+        margin-top: 8px;     /* Space above lists */
+        margin-bottom: 12px; /* Space below lists */
+    }
+
+    /* Main content */
+    main {
+      padding: 40px 50px;
+    }
+
+    /* Disease Gallery */
+    .disease-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .disease-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .disease-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    .disease-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .disease-card .card-body {
+      padding: 15px;
+    }
+
+    .disease-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #222;
+    }
+
+    .disease-card p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.4em;
+    }
+
+    /* Floating Diagnose Button */
+    .diagnose-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(90deg, #2c7a4b, #4caf50);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 28px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 2000;
+      transition: all 0.3s ease;
+    }
+
+    .diagnose-btn:hover {
+      background: linear-gradient(90deg, #14532d, #2c7a4b);
+      transform: scale(1.05);
+    }
+
+    .diagnose-btn .icon {
+      font-size: 18px;
+      vertical-align: text-top;   /* shifts it above baseline */
+      position: relative;
+      top: -1px;                  /* fine-tune upward shift */
+    }
+
+
+    /* ==================== Footer Styles ==================== */
+footer {
+  background-color: #302715; /* Dark blue-gray background */
+  color: #d1d5db;         /* Light gray text color */
+  padding: 60px 0 0 0;
+  margin-top: 50px;        /* Space above the footer */
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 50px; /* Same horizontal padding as the main content */
+}
+
+.footer-column {
+  flex: 1;
+  min-width: 220px; /* Minimum width before wrapping */
+  margin: 0 15px 30px 15px;
+}
+
+.footer-column h4 {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.footer-column p {
+  margin: 0;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+  color: #d1d5db;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+  color: #ffffff;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 30px;
+  border-top: 1px solid #302715; /* Separator line */
+  color: #9ca3af;
+  font-size: 14px;
+}
