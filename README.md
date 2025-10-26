@@ -33,10 +33,9 @@ This front-end React app will later connect to a **Python-based backend** that p
 ## 🏗️ Project Structure
 
 ```
-PlantDisease_React/
-├── .git/
-├── node_modules/
+
 ├── public/
+│
 ├── src/
 │   ├── assets/
 │   │   └── css/
@@ -53,19 +52,22 @@ PlantDisease_React/
 │   │   └── SignUp.jsx
 │   │
 │   ├── UI/
-│   │   ├── App.css
-│   │   └── App.jsx
+│   │   ├── AppLayout.jsx
+│   │   ├── Footer.jsx
+│   │   └── Header.jsx
 │   │
+│   ├── App.css
+│   ├── App.jsx
 │   ├── index.css
 │   └── main.jsx
 │
 ├── .gitignore
 ├── eslint.config.js
 ├── index.html
-├── package.json
 ├── package-lock.json
-├── vite.config.js
-└── README.md
+├── package.json
+├── README.md
+└── vite.config.js
 
 ```
 
