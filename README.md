@@ -34,17 +34,39 @@ This front-end React app will later connect to a **Python-based backend** that p
 
 ```
 PlantDisease_React/
+├── .git/
+├── node_modules/
 ├── public/
-│   └── index.html
 ├── src/
-│   ├── App.jsx
-│   ├── components/
 │   ├── assets/
-│   └── styles/
+│   │   └── css/
+│   │       ├── about.css
+│   │       ├── contact.css
+│   │       ├── login.css
+│   │       └── signup.css
+│   │
+│   ├── pages/
+│   │   ├── About.jsx
+│   │   ├── Contact.jsx
+│   │   ├── Home.jsx
+│   │   ├── Login.jsx
+│   │   └── SignUp.jsx
+│   │
+│   ├── UI/
+│   │   ├── App.css
+│   │   └── App.jsx
+│   │
+│   ├── index.css
+│   └── main.jsx
+│
 ├── .gitignore
+├── eslint.config.js
+├── index.html
 ├── package.json
+├── package-lock.json
 ├── vite.config.js
 └── README.md
+
 ```
 
 ---
