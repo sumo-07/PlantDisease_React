@@ -26,7 +26,7 @@ export const Footer = () => {
                 <div className="footer-column">
                     <h4>Key Features</h4>
                     <ul>
-                        <li><NavLink to="/" className="f-diagnose-btn">Diagnose NavLink Plant</NavLink></li>
+                        <li><NavLink to="/diagnose" className="f-diagnose-btn">Diagnose NavLink Plant</NavLink></li>
                         <li><NavLink to="/">Disease Library</NavLink></li>
                         <li><NavLink to="#">Treatment Guides</NavLink></li>
                         <li><NavLink to="#">Plant Care Tips</NavLink></li>
