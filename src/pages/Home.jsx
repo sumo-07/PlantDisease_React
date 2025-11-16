@@ -1,37 +1,31 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
-    // 1. Set up state to track if the extra content is visible
-    // false by default, so it's hidden.
+
+    const navigate = useNavigate(); // For navigation
     const [isExtraContentVisible, setIsExtraContentVisible] = useState(false);
 
-    // 2. Create the event handler functions from your script.js
-
-    // Function for the diagnose buttons
+    // Navigate to /diagnose page
     const handleDiagnose = () => {
-        alert("🚧 Feature under construction 🚧\nSoon you'll be able to upload a plant photo for disease identification.");
+        navigate('/diagnose');
     };
 
-    // Function for the 'showInfoBtn'
     const handleShowInfo = () => {
-        setIsExtraContentVisible(true); // Show the extra content
+        setIsExtraContentVisible(true);
     };
 
-    // Function for the 'hideInfoBtn'
     const handleHideInfo = () => {
-        setIsExtraContentVisible(false); // Hide the extra content
-        window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top
+        setIsExtraContentVisible(false);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     return (
         <>
-            {/* */}
-            {/* 3. Attach the onClick handler */}
             <button className="diagnose-btn" onClick={handleDiagnose}>
                 📷 Diagnose a plant
             </button>
 
-            {/* */}
             <div className="info-box">
                 <p>
                     Plant disease identification may be a complicated task for a newbie,
@@ -41,11 +35,8 @@ export const Home = () => {
                     of various causes, from pathogens to adverse environmental conditions.
                 </p>
 
-                {/* 4. Use the state to conditionally apply inline styles.
-                  This perfectly mimics your original script's logic.
-                */}
                 <div 
-                    className="extra-content" 
+                    className="extra-content"
                     id="extraContent"
                     style={{ display: isExtraContentVisible ? 'block' : 'none' }}
                 >
@@ -64,7 +55,10 @@ export const Home = () => {
                     </ul>
 
                     <h3>Diseases Identification by Plant Type</h3>
-                    <p>Numerous plant diseases exist, mainly distributed among peas, potatoes, buckwheat, grasses, corn, flax, sunflower, rice, soybeans, and many others.</p>
+                    <p>
+                        Numerous plant diseases exist, mainly distributed among peas, potatoes,
+                        buckwheat, grasses, corn, flax, sunflower, rice, soybeans, and many others.
+                    </p>
 
                     <h3>Tree Disease</h3>
                     <p>The strong framework of the trunk and branches determines the tree's vitality...</p>
@@ -90,17 +84,14 @@ export const Home = () => {
                         <li>Soft stem or leaves</li>
                     </ul>
 
-                    {/* 3. Attach the onClick handler */}
-                    <button className="btn hide-btn" id="hideInfoBtn" onClick={handleHideInfo}>Hide Info</button>
+                    <button className="btn hide-btn" id="hideInfoBtn" onClick={handleHideInfo}>
+                        Hide Info
+                    </button>
                 </div>
 
-                {/* 4. Also use the state to show/hide this button.
-                  When content is visible, this button is hidden ('none').
-                  When content is hidden, this button is shown ('inline-block').
-                */}
-                <button 
-                    className="btn" 
-                    id="showInfoBtn" 
+                <button
+                    className="btn"
+                    id="showInfoBtn"
                     onClick={handleShowInfo}
                     style={{ display: isExtraContentVisible ? 'none' : 'inline-block' }}
                 >
@@ -108,15 +99,13 @@ export const Home = () => {
                 </button>
             </div>
 
-            {/* */}
             <main>
-                {/* 5. Converted your inline style to a React style object */}
                 <h2 style={{ textAlign: 'center', marginBottom: '30px', color: '#2c7a4b' }}>
                     Common Plant Diseases
                 </h2>
 
                 <section className="disease-gallery">
-                    {/* */}
+
                     <div className="disease-card">
                         <img src="https://strapi.myplantin.com/small_Example_of_Shot_Hole_Disease_b1f61159b2.webp" alt="Shot Hole Disease" />
                         <div className="card-body">
@@ -157,7 +146,6 @@ export const Home = () => {
                         </div>
                     </div>
 
-                    {/* */}
                     <div className="disease-card">
                         <img src="https://strapi.myplantin.com/small_Heat_Damage_1024x675_d37ee42fcd.webp" alt="Light or Heat Source Damage" />
                         <div className="card-body">
@@ -197,8 +185,9 @@ export const Home = () => {
                             <p>Humidity and drafts can become major troubles for your plant friends. Both ...</p>
                         </div>
                     </div>
+
                 </section>
             </main>
         </>
     );
-}
+};

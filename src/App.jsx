@@ -5,6 +5,7 @@ import AppLayout from "./UI/AppLayout";
 import { Contact } from "./pages/Contact";
 import { Login } from "./pages/Login";
 import { SignUp } from "./pages/SignUp";
+import { Diagnose } from "./pages/Diagnose";
 
 
 export const App = () => {
@@ -39,6 +40,11 @@ export const App = () => {
         {
           path: "/signup",
           element: <SignUp />,
+          
+        },
+        {
+          path: "/diagnose",
+          element: <Diagnose />,
           
         },
         
