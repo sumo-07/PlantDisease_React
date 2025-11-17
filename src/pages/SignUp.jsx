@@ -1,31 +1,62 @@
-import React, { useState } from 'react'; // 1. Import useState
+import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import "../css/signup.css";
 
 export const SignUp = () => {
-    // 2. Set up state for inputs and the error message
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
+    const [strengthMessage, setStrengthMessage] = useState('');
+    const [strengthClass, setStrengthClass] = useState('');
 
-    // 3. Create the form submission handler
-    const handleSubmit = (event) => {
-        // Always prevent the default form submission
-        event.preventDefault();
+    // Function to check password strength
+    const checkPasswordStrength = (pwd) => {
+        const hasUpper = /[A-Z]/.test(pwd);
+        const hasLower = /[a-z]/.test(pwd);
+        const hasNumber = /[0-9]/.test(pwd);
+        const hasSpecial = /[^A-Za-z0-9]/.test(pwd);
+        const isLongEnough = pwd.length >= 8;
 
-        // Clear any previous error
-        setPasswordError('');
-
-        // Check if passwords match
-        if (password !== confirmPassword) {
-            setPasswordError('Passwords do not match. Please try again.');
-            return; // Stop the submission
+        if (!isLongEnough) {
+            setStrengthClass("strength-weak");
+            return "Password must be at least 8 characters";
         }
 
-        // If they match, proceed with signup
+        if (hasUpper && hasLower && hasNumber && hasSpecial) {
+            setStrengthClass("strength-strong");
+            return "Strong password ✔";
+        }
+
+        if ((hasLower || hasUpper) && hasNumber) {
+            setStrengthClass("strength-medium");
+            return "Medium password";
+        }
+
+        setStrengthClass("strength-weak");
+        return "Weak password";
+    };
+
+    const handlePasswordChange = (e) => {
+        const newPassword = e.target.value;
+        setPassword(newPassword);
+        setStrengthMessage(checkPasswordStrength(newPassword));
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setPasswordError('');
+
+        if (password !== confirmPassword) {
+            setPasswordError('Passwords do not match.');
+            return;
+        }
+
+        if (strengthMessage !== "Strong password ✔") {
+            setPasswordError('Please choose a strong password before signing up.');
+            return;
+        }
+
         alert('Account created successfully!');
-        // In a real app, you would send the form data to your server here
-        // e.g., submitSignup({ fullname, email, password });
     };
 
     return (
@@ -33,73 +64,65 @@ export const SignUp = () => {
             <div className="signup">
                 <h2 className="signup-title">Sign Up</h2>
                 <p className="notice">Create your account to access the system</p>
-                
-                {/* 4. Attach the onSubmit handler and remove the 'action' */}
+
                 <form className="form-signup" id="signup-form" onSubmit={handleSubmit}>
-                    {/* Use htmlFor instead of for */}
+
                     <label htmlFor="fullname">Full Name</label>
                     <div className="input-name">
                         <i className="fas fa-user icon"></i>
-                        <input autoComplete="off" type="text" name="fullname" placeholder="Enter your full name" required />
+                        <input type="text" name="fullname" placeholder="Enter your full name" required />
                     </div>
 
                     <label htmlFor="email">E-mail</label>
                     <div className="input-email">
                         <i className="fas fa-envelope icon"></i>
-                        <input autoComplete="off" type="email" name="email" placeholder="Enter your e-mail" required />
+                        <input type="email" name="email" placeholder="Enter your e-mail" required />
                     </div>
 
                     <label htmlFor="password">Password</label>
                     <div className="input-password">
                         <i className="fas fa-lock icon"></i>
-                        {/* 5. Make this a controlled component */}
                         <input 
-                            autoComplete="off" 
-                            type="password" 
-                            id="password" 
-                            name="password" 
-                            placeholder="Enter your password" 
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
                             value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required 
+                            onChange={handlePasswordChange}
+                            required
                         />
                     </div>
+
+                    {/* Password strength message with color */}
+                    <p className={`strength-message ${strengthClass}`}>
+                        {strengthMessage}
+                    </p>
 
                     <label htmlFor="confirm-password">Confirm Password</label>
                     <div className="input-confirm-password">
                         <i className="fas fa-lock icon"></i>
-                        {/* 5. Make this a controlled component */}
-                        <input 
-                            autoComplete="off" 
-                            type="password" 
-                            id="confirm-password" 
-                            name="confirm-password" 
+                        <input
+                            type="password"
+                            id="confirm-password"
+                            name="confirm-password"
                             placeholder="Confirm your password"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
-                            required 
+                            required
                         />
                     </div>
 
-                    {/* 6. Display the error message from state */}
-                    <p
-                        id="password-error"
-                        style={{
-                            color: 'red',
-                            textAlign: 'center',
-                            marginTop: '10px'
-                        }}
-                    >
+                    <p id="password-error" className="error-text">
                         {passwordError}
                     </p>
+
                     <div className="checkbox">
                         <label htmlFor="remember">
-                            <input autoComplete="off" type="checkbox" name="remember" />
-                            Remember me
+                            <input type="checkbox" name="remember" /> Remember me
                         </label>
                     </div>
 
-                    <button type="submit"><i className="fas fa-user-plus" ></i> Sign Up</button>
+                    <button type="submit"><i className="fas fa-user-plus"></i> Sign Up</button>
                 </form>
 
                 <NavLink to="/login">Already have an account? Login here</NavLink>
