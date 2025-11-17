@@ -85,10 +85,17 @@ export const Diagnose = () => {
                 )}
             </div>
 
-            {!result && (
-                <button className="analyze-btn" onClick={handleAnalyze}>
-                    🔍 Analyze Plant
-                </button>
+            {/* 🔄 If image uploaded but not analyzed → show Change & Analyze buttons */}
+            {preview && !result && (
+                <div className="button-group">
+                    <button className="change-image-btn" onClick={handleReset}>
+                        🖼️ Upload Another Image
+                    </button>
+
+                    <button className="analyze-btn" onClick={handleAnalyze}>
+                        🔍 Analyze Plant
+                    </button>
+                </div>
             )}
 
             {result && (

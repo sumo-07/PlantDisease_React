@@ -46,6 +46,32 @@
   border-radius: 10px;
 }
 
+/* === NEW BUTTON GROUP FOR SPACING === */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;   /* space between both buttons */
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+/* Upload Another Image Button */
+.change-image-btn {
+  padding: 10px 22px;
+  background-color: #f0ad4e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-weight: bold;
+}
+
+.change-image-btn:hover {
+  background-color: #ec971f;
+}
+
 /* Analyze button */
 .analyze-btn {
   padding: 12px 30px;
@@ -56,7 +82,6 @@
   font-size: 18px;
   cursor: pointer;
   transition: 0.2s ease;
-  margin-top: 10px;
 }
 
 .analyze-btn:hover {
@@ -178,7 +203,7 @@
   color: #25673f;
 }
 
-/* 🔄 Analyze Another Plant Button */
+/* Analyze Another Plant Button */
 .analyze-another-btn {
   width: 100%;
   padding: 12px;
