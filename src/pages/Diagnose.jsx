@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../css/diagnose.css";   // Import CSS
+import "../css/diagnose.css";
 
 export const Diagnose = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -21,7 +21,6 @@ export const Diagnose = () => {
             return;
         }
 
-        // Fake backend response with doctor data
         setTimeout(() => {
             setResult({
                 disease: "Powdery Mildew",
@@ -57,6 +56,12 @@ export const Diagnose = () => {
         }, 1200);
     };
 
+    const handleReset = () => {
+        setSelectedImage(null);
+        setPreview(null);
+        setResult(null);
+    };
+
     return (
         <div className="diagnose-container">
             <h1 className="diagnose-heading">🌿 Diagnose Your Plant</h1>
@@ -80,9 +85,11 @@ export const Diagnose = () => {
                 )}
             </div>
 
-            <button className="analyze-btn" onClick={handleAnalyze}>
-                🔍 Analyze Plant
-            </button>
+            {!result && (
+                <button className="analyze-btn" onClick={handleAnalyze}>
+                    🔍 Analyze Plant
+                </button>
+            )}
 
             {result && (
                 <div className="result-section">
@@ -98,7 +105,6 @@ export const Diagnose = () => {
                         ))}
                     </ul>
 
-                    {/* Doctors Dashboard */}
                     <h3 className="doctor-section-title">👨‍⚕️ Recommended Plant Doctors</h3>
 
                     <div className="doctor-grid">
@@ -111,6 +117,10 @@ export const Diagnose = () => {
                             </div>
                         ))}
                     </div>
+
+                    <button className="analyze-another-btn" onClick={handleReset}>
+                        🔄 Analyze Another Plant
+                    </button>
                 </div>
             )}
         </div>

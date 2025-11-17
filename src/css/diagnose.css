@@ -114,7 +114,6 @@
   color: #2c7a4b;
 }
 
-
 /* Doctor Section Title */
 .doctor-section-title {
   margin-top: 25px;
@@ -177,4 +176,23 @@
   font-size: 15px;
   font-weight: bold;
   color: #25673f;
+}
+
+/* 🔄 Analyze Another Plant Button */
+.analyze-another-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 25px;
+  background-color: #1e7a46;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.analyze-another-btn:hover {
+  background-color: #165d35;
 }
